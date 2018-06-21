@@ -1,0 +1,41 @@
+development cycle
+
+1. create models, and associations (a user has many games through rankings  games have many users through rankings)
+
+2. build tables
+users have a name, email, password, console, rating score
+
+games have a name, game type, play_time, main_setup
+
+rankings have user_id game_id
+
+validations:
+user will validate good input for name, rating score, email
+games will validate name, play time
+scope method for score under a certain number?
+
+nest games under user?
+
+create a fields with error message  
+
+3. create a log in/ sign up pages (sign in at session sign up in user new)
+
+4. build oauth through github? or facebook?
+
+5. user show page shows all user stats, and all rankings with game name and type
+
+6. user edit allows current user to edit all info
+
+7. session has a destroy for log out
+
+8. games new has a form for name game type play time and main set up
+
+9. edit form for games
+
+10. games show lists stats for specific game
+
+11. index shows all user games
+
+12. ranking has a method to call a phrase depending on ranking number will be a conditional and posted to games show page
+
+13.
