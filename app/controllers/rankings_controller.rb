@@ -1,2 +1,2 @@
-class RankingController < ApplicationController
+class RankingsController < ApplicationController
 end

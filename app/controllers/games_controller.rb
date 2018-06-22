@@ -1,2 +1,2 @@
-class GameController < ApplicationController
+class GamesController < ApplicationController
 end
