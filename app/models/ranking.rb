@@ -16,4 +16,20 @@ class Ranking < ApplicationRecord
 #   end
 # end
 
+
+  def new_ranking(new_score)
+  #where to build this new score
+    user = self.user
+    game = self.game
+      if game.score > #something????
+        game.score - new_score
+      elsif
+         game.score < new_score
+          new_score - game.score
+        else
+          "Ranking has not changed!"
+        end
+      end
+
+  end
 end
