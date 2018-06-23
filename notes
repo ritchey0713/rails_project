@@ -1,22 +1,22 @@
 development cycle
 
-1. create models, and associations (a user has many games through rankings  games have many users through rankings)
+1. create models, and associations (a user has many games through rankings  games have many users through rankings) [done]
 
-2. build tables
+2. build tables [done]
 users have a name, email, password, console, rating score
 
 games have a name, game type, play_time, main_setup
 
 rankings have user_id game_id
 
-validations:
+validations: [done]
 user will validate good input for name, rating score, email
 games will validate name, play time
 scope method for score under a certain number?
 
-nest games under user?
+nest games under user? [done????]
 
-create a fields with error message  
+create a fields with error message, #ill need to build my forms out first to debug  
 
 3. create a log in/ sign up pages (sign in at session sign up in user new)
 
