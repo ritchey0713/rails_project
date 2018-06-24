@@ -4,8 +4,4 @@ class Game < ApplicationRecord
   validates :name, presence: true
   validates :play_time, numericality: true
 
-  def current_user_games(user)
-    Game.where("games.user_id = ?", user.id)
-  end
-  
 end

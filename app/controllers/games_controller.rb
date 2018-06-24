@@ -14,19 +14,19 @@ class GamesController < ApplicationController
   end
 
   def index
-    @games = current_user_games(current_user)
+    @games = current_user.games.all
   end
 
   def show
-    @game = Game.find(params[:id])
+    @game = find_game
   end
 
   def edit
-    @game = Game.find(params[:id])
+    @game = find_game
   end
 
   def update
-    @game = Game.find(params[:id])
+    @game = find_game
     if @game.update(game_params)
       redirect_to user_game_path(@game)
     else
@@ -39,5 +39,9 @@ end
   def game_params
     params.require(:game).permit(:name, :game_type, :play_time, :main_setup)
   end
+
+  def find_game
+      Game.find(params[:id])
+    end
 
 end
