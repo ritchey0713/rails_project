@@ -1,24 +1,19 @@
-# README
+Ranking Tracker
+An app in rails for tracking ranked score in games.
+A user will set a goal for the season, and update this as their score changes to keep track of all their rankings
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Installation/Development
+Use Ruby 2.3.3 and Rails 4.2.3. To begin developing/tinkering with RankingTracker, fork and clone this repo, then run:
 
-Things you may want to cover:
+$ bundle install
+$ rake db:migrate
+To run your own local development server, run
 
-* Ruby version
+$ rails s
+You'll be all set. 
 
-* System dependencies
+Contributions
+Contributions are welcome via pull requests and issues.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+License
+ChoreCorps is released under the MIT license.
