@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   def show
     if session[:user_id]
       @user = User.find(params[:id])
+      @games = @user.game
     else
       redirect_to '/'
     end
@@ -25,6 +26,6 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :console, :goal)
-  end  
+  end
 
 end
