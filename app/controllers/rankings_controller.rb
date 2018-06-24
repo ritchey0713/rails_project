@@ -4,5 +4,5 @@ class RankingsController < ApplicationController
     @ranking = Ranking.create(user_id: params[:user_id], game_id: params[:game_id])
     @message = @ranking.new_rank(new_score: params[:new_score])
     flash[:notice] = @message
-    redirect_to #where should this go to????
+    redirect_to user_path(@ranking.user_id)
 end

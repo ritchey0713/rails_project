@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       @games = @user.game
     else
-      redirect_to '/'
+      redirect_to root_path
     end
   end
 
