@@ -1,1 +1,20 @@
-<%= form_for @game do |f| %> 
+<%= form_for @game do |f| %>
+
+<%= f.label :name %>
+<%= f.text_field :name %></br>
+
+What kind of game is this?
+<%= f.label :game_type %>
+<%= f.text_field :game_type %></br>
+
+How many hours have you played?
+<%= f.label :play_time%>
+<%= f.number_field %></br>
+
+Who/what is your main character?
+<%= f.label :main_setup %>
+<%= f.text_field :main_setup %></br>
+
+what is your current skill rating?
+<%= f.label :score %>
+<%= f.number_field :score %>
