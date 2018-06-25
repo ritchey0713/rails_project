@@ -1,19 +1,31 @@
 <h1> Thanks for signing up with us! </h1>
 
 <%= form_for @user do |f| %>
+
+  <% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |msg| %>
+      <%= msg %>
+  <% end %>
+
+  Please pick a User Name
   <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= f.text_field :name %></br>
 
+  Please enter your Email address
   <%= f.label :email %>
-  <%= f.text_field :email %>
+  <%= f.text_field :email %></br>
 
+  What console do you play on?
   <%= f.label :console %>
-  <%= f.text_field :console %>
+  <%= f.text_field :console %></br>
 
+  WHat is you desired skill rating?
   <%= f.label :goal %>
-  <%= f.number_field :goal %>
+  <%= f.number_field :goal %></br>
 
+  Please choose a password
   <%= f.label :password %>
-  <%= f.password_field :password %>
+  <%= f.password_field :password %></br> 
 
   <%= f.submit "Create Account!" %>
+<% end %>

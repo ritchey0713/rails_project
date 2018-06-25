@@ -1,22 +1,30 @@
 <%= form_for game do |f| %>
 
-<%= f.label :name %>
-<%= f.text_field :name %></br>
+  <% if game.errors.any? %>
 
-What kind of game is this?
-<%= f.label :game_type %>
-<%= f.text_field :game_type %></br>
+    <% game.errors.full_messages.each do |msg| %>
+      <%= msg %>
+  <% end %>
 
-How many hours have you played?
-<%= f.label :play_time%>
-<%= f.number_field %></br>
+  What is the name of this game? 
+  <%= f.label :name %>
+  <%= f.text_field :name %></br>
 
-Who/what is your main character?
-<%= f.label :main_setup %>
-<%= f.text_field :main_setup %></br>
+  What kind of game is this?
+  <%= f.label :game_type %>
+  <%= f.text_field :game_type %></br>
 
-what is your current skill rating?
-<%= f.label :score %>
-<%= f.number_field :score %>
+  How many hours have you played?
+  <%= f.label :play_time%>
+  <%= f.number_field %></br>
 
-<%= f.submit "Click to submit!" %>
+  Who/what is your main character?
+  <%= f.label :main_setup %>
+  <%= f.text_field :main_setup %></br>
+
+  what is your current skill rating?
+  <%= f.label :score %>
+  <%= f.number_field :score %>
+
+  <%= f.submit "Click to submit!" %>
+<% end %>
