@@ -1,4 +1,4 @@
-<%= form_for @game do |f| %>
+<%= form_for game do |f| %>
 
 <%= f.label :name %>
 <%= f.text_field :name %></br>
@@ -18,3 +18,5 @@ Who/what is your main character?
 what is your current skill rating?
 <%= f.label :score %>
 <%= f.number_field :score %>
+
+<%= f.submit "Click to submit!" %>
