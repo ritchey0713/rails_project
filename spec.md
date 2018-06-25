@@ -27,14 +27,15 @@ Include nested resource show or index (URL e.g. users/2/recipes) [x] games neste
 
 Include nested resource "new" form (URL e.g. recipes/1/ingredients) [x] form for new game
 
-Include form display of validation errors (form URL e.g. /recipes/new)
+Include form display of validation errors (form URL e.g. /recipes/new) [x] added a fields with errors condition on forms
 
 Confirm:
 
-The application is pretty DRY
+The application is pretty DRY [x] created helpers
 
-Limited logic in controllers
+
+Limited logic in controllers [x]
 
 Views use helper methods if appropriate [x] current user and logged in
 
-Views use partials if appropriate [x] _form in games views 
+Views use partials if appropriate [x] _form in games views
