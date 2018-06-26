@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'welcome#home'
 
   resources :users, only:[:new, :create, :show] do
-    resources :games 
+    resources :games
   end
 
   resources :rankings, only:[:new]

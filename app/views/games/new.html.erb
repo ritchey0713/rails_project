@@ -1,12 +1,15 @@
-<%= form_for game do |f| %>
+<h1> Please add a new game for us to track! </h1>
 
-  <% if game.errors.any? %>
+<%= form_for [@user, @game] do |f| %>
 
-    <% game.errors.full_messages.each do |msg| %>
+  <% if @game.errors.any? %>
+
+    <% @game.errors.full_messages.each do |msg| %>
       <%= msg %>
+    <% end %>
   <% end %>
 
-  What is the name of this game? 
+  What is the name of this game?
   <%= f.label :name %>
   <%= f.text_field :name %></br>
 
@@ -16,7 +19,7 @@
 
   How many hours have you played?
   <%= f.label :play_time%>
-  <%= f.number_field %></br>
+  <%= f.number_field :play_time%></br>
 
   Who/what is your main character?
   <%= f.label :main_setup %>

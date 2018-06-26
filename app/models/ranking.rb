@@ -26,8 +26,6 @@ class Ranking < ApplicationRecord
           "Your new ranking is #{total_score}"
         else
           "Ranking has not changed!"
-        end
       end
-
-  end
+    end
 end

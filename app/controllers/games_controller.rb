@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
 
   def new
+    @user = User.find(session[:user_id])
     @game = Game.new
   end
 
