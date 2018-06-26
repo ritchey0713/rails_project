@@ -1,33 +1,3 @@
 <h1> Please add a new game for us to track! </h1>
 
-<%= form_for [@user, @game] do |f| %>
-
-  <% if @game.errors.any? %>
-
-    <% @game.errors.full_messages.each do |msg| %>
-      <%= msg %>
-    <% end %>
-  <% end %>
-
-  What is the name of this game?
-  <%= f.label :name %>
-  <%= f.text_field :name %></br>
-
-  What kind of game is this?
-  <%= f.label :game_type %>
-  <%= f.text_field :game_type %></br>
-
-  How many hours have you played?
-  <%= f.label :play_time%>
-  <%= f.number_field :play_time%></br>
-
-  Who/what is your main character?
-  <%= f.label :main_setup %>
-  <%= f.text_field :main_setup %></br>
-
-  what is your current skill rating?
-  <%= f.label :score %>
-  <%= f.number_field :score %>
-
-  <%= f.submit "Click to submit!" %>
-<% end %>
+<%= render 'form' %> 

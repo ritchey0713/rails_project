@@ -15,7 +15,8 @@ class GamesController < ApplicationController
   end
 
   def index
-    @games = current_user.games.all
+    @user = User.find(session[:user_id])
+    @games = @user.games
   end
 
   def show
