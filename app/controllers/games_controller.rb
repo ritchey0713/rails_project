@@ -7,8 +7,8 @@ class GamesController < ApplicationController
 
   def create
     @game = current_user.games.build(game_params)
+      @ranking = current_user.rankings.build
       if @game.save
-        binding.pry
         redirect_to user_games_path(current_user)
       else
         render :new
