@@ -8,10 +8,10 @@ class GamesController < ApplicationController
   def create
 
     @game = current_user.games.build(game_params)
-      binding.pry
+
       if @game.save
-        @ranking = current_user.rankings.build #sets the user id 
-        redirect_to user_games_path(current_user)
+        @ranking = current_user.rankings.build #sets the user id but not the game id????
+        redirect_to user_game_path(current_user, @game)
       else
         render :new
     end
