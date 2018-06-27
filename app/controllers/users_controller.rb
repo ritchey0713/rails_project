@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def show
     if logged_in
-      @user = User.find(params[:id])
+      @user = current_user
       @games = @user.games
     else
       redirect_to root_path

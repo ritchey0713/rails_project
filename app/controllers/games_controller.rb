@@ -9,7 +9,6 @@ class GamesController < ApplicationController
 
     @game = current_user.games.build(game_params)
     if @game.save
-      binding.pry
       redirect_to user_games_path(current_user)
     else
       render :new
