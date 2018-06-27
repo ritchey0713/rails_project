@@ -1,5 +1,9 @@
 <h1> Welcome back, <%= @user.name %> </h1>
 
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>   
+
 <h3> Your current stats: </h3>
 <h5>Preferred console: <%= @user.console %> </br>
 Current score goal: <%= @user.goal %> </br> </h5>
@@ -9,5 +13,5 @@ Current score goal: <%= @user.goal %> </br> </h5>
 <%= g.score %>
 <% end %>
 
-<%= link_to "Add a game", new_user_game_path(@user) %> 
+<%= link_to "Add a game", new_user_game_path(@user) %>
 <%= link_to "Log out", logout_path %>
