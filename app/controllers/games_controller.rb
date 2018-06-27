@@ -6,17 +6,18 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.new(game_params)
+
+    @game = current_user.games.build(game_params)
     if @game.save
-      redirect_to user_games_path(@game)
+      binding.pry
+      redirect_to user_games_path(current_user)
     else
       render :new
     end
   end
 
   def index
-    @user = User.find(session[:user_id])
-    @games = @user.games
+    @games = current_user.games
   end
 
   def show
@@ -24,6 +25,7 @@ class GamesController < ApplicationController
   end
 
   def edit
+    @user = current_user
     @game = find_game
   end
 
@@ -39,7 +41,7 @@ end
   private
 
   def game_params
-    params.require(:game).permit(:name, :game_type, :play_time, :main_setup)
+    params.require(:game).permit(:name, :game_type, :play_time, :main_setup, :score)
   end
 
   def find_game

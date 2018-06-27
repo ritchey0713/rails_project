@@ -1,8 +1,7 @@
 <h1> Hey there <%= current_user.name %>, here is your library and rankings! </h1>
 
 <% @games.each do |g| %>
-
-  <%= link_to g.name, user_game_path(g.id) %> </br>
+  Game name: <%= link_to g.name, edit_user_game_path(current_user, g) %> </br>
   Play time (hours): <%= g.play_time %></br>
   Setup: <%= g.main_setup %></br>
 <% end %>
