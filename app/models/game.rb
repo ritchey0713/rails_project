@@ -6,15 +6,15 @@ class Game < ApplicationRecord
 
   scope :pro_level, ->(play_time) { where("play_time > 200", play_time ) }
 
-  def rank_symbol(new_score)
-    game = self.game
-      if game.new_score > 2500
+  def rank_symbol(score)
+    game = self.score
+      if game > 2500
         "You are a platinum rank CONGRATS!"
-      elsif 2000 < game.new_score < 2499
+      elsif 2000 < game && game < 2499
         "You are a gold rank!"
-      elsif 1500 < game.new_score <1999
+      elsif 1500 < game && game < 1999
         "You are a silver rank"
-      elsif 1000 < game.new_score < 1499
+      elsif 1000 < game && game < 1499
         "you are a bronze rank"
       else
         "you are a bronze rank :( keep trying!"
