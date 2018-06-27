@@ -4,7 +4,7 @@
 
   <% if @user.errors.any? %>
     <% @user.errors.full_messages.each do |msg| %>
-      <%= msg %></br> 
+      <%= msg %></br>
     <% end %>
   <% end %>
 
@@ -17,7 +17,7 @@
   What console do you play on?
   <%= f.text_field :console %></br>
 
-  WHat is you desired skill rating?
+  What is you desired skill rating?
   <%= f.number_field :goal %></br>
 
   Please choose a password

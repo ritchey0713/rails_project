@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def show
     if logged_in
       @user = current_user
-      @games = @user.games
+      @games = current_user.games
     else
       redirect_to root_path
     end
