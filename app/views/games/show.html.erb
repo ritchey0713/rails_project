@@ -12,4 +12,5 @@
 
 <%= link_to "logout", logout_path %>
 <%= link_to "edit #{@game.name}", edit_user_game_path(current_user, @game) %>
-<%= link_to " Your home page", user_path(current_user) %> 
+<%= link_to " Your home page", user_path(current_user) %>
+<%= link_to "All games", user_game_path(current_user) %> 
