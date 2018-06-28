@@ -13,7 +13,7 @@ The "through" part of the has_many through includes at least one user submittabl
 
 Include reasonable validations for simple model objects (list of model objects with validations e.g. User, Recipe, Ingredient, Item)[x] validation for name email password and score
 
-Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes) [x] games/pro_level to show rank 
 
 Include signup (how e.g. Devise)[x] user new
 

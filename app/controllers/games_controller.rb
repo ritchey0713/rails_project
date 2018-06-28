@@ -9,7 +9,7 @@ class GamesController < ApplicationController
 
     @game = current_user.games.build(game_params)
       if @game.save
-        @ranking = current_user.rankings.build(id:[@game.id])#sets the user id but not the game id????
+        @ranking = current_user.rankings.build(id:[@game.id])  #sets the user id but not the game id????
         redirect_to user_games_path(current_user)
       else
         render :new
@@ -18,7 +18,6 @@ class GamesController < ApplicationController
 
   def index
     @games = current_user.games
-
   end
 
   def show
