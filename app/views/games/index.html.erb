@@ -4,6 +4,8 @@
   Game name: <%= link_to g.name, edit_user_game_path(current_user, g) %> </br>
   Play time (hours): <%= g.play_time %></br>
   Setup: <%= g.main_setup %></br>
+  Score: <%= g.score %></br> 
 <% end %>
 
 <%= link_to "logout", logout_path %>
+<%= link_to "Add a game", new_user_game_path(current_user) %>

@@ -10,7 +10,7 @@ class GamesController < ApplicationController
     @game = current_user.games.new(game_params)
       if @game.save
         @ranking = current_user.rankings.build(:game => @game )
-        @ranking.save 
+        @ranking.save
           #sets the user id but not the game id????
         redirect_to user_games_path(current_user)
       else
@@ -20,7 +20,6 @@ class GamesController < ApplicationController
 
   def index
     @games = current_user.games
-binding.pry
   end
 
   def show
