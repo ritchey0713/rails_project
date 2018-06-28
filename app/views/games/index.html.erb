@@ -4,8 +4,11 @@
   Game name: <%= link_to g.name, edit_user_game_path(current_user, g) %> </br>
   Play time (hours): <%= g.play_time %></br>
   Setup: <%= g.main_setup %></br>
-  Score: <%= g.score %></br> 
+  Score: <%= g.score %></br>
+  <%= link_to "Delete", user_game_path(current_user, g), method: :delete %> </br>
+
 <% end %>
 
 <%= link_to "logout", logout_path %>
 <%= link_to "Add a game", new_user_game_path(current_user) %>
+<%= link_to "Home Page", user_path(current_user) %>

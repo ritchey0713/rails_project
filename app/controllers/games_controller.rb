@@ -40,6 +40,12 @@ class GamesController < ApplicationController
   end
 end
 
+  def destroy
+    @game = find_game
+    @game.rankings.clear
+    redirect_to user_games_path(current_user)
+  end
+
   private
 
   def game_params
