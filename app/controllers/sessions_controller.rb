@@ -4,8 +4,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if @user = request.env["omniauth.auth"]
-      render 'users/edit'
+    if request.env["omniauth.auth"]
+      if @user = User.find_by(name: params[:name])
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
+      else
+        @user = User.new 
+        render 'users/new'
+      end
 
     else
       @user = User.find_by(name: params[:name])

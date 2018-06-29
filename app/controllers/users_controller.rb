@@ -23,26 +23,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-    @user = User.new(user_params)
-    if @user.save
-      session[:user_id] = @user.id
-    else
-      render 'users/edit'
-    end 
-  end
-
-  def update
-    @user = current_user
-    if @user.update(user_params)
-      redirect_to user_path(current_user)
-    else
-      render :edit
-  end
-end
-
-
-
   private
 
   def user_params
