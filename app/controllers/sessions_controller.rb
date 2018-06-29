@@ -9,17 +9,16 @@ class SessionsController < ApplicationController
         session[:user_id] = @user.id
         redirect_to user_path(@user)
       else
-        @user = User.new 
+        @user = User.new
         render 'users/new'
       end
-
     else
       @user = User.find_by(name: params[:name])
         if @user && @user.authenticate(params[:password])
-            session[:user_id] = @user.id
-            redirect_to user_path(@user)
+          session[:user_id] = @user.id
+          redirect_to user_path(@user)
         else
-            redirect_to signin_path
+          redirect_to signin_path
         end
       end
     end

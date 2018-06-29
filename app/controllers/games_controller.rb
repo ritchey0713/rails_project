@@ -6,16 +6,14 @@ class GamesController < ApplicationController
   end
 
   def create
-
     @game = current_user.games.new(game_params)
       if @game.save
         @ranking = current_user.rankings.build(:game => @game )
         @ranking.save
-          #sets the user id but not the game id????
         redirect_to user_games_path(current_user)
       else
         render :new
-    end
+      end
   end
 
   def index
@@ -33,11 +31,11 @@ class GamesController < ApplicationController
 
   def update
     @game = find_game
-    if @game.update(game_params)
-      redirect_to user_game_path(@game)
-    else
-      render :edit
-  end
+      if @game.update(game_params)
+        redirect_to user_game_path(@game)
+      else
+        render :edit
+      end
 end
 
   def destroy
@@ -55,5 +53,4 @@ end
   def find_game
       Game.find(params[:id])
     end
-
 end

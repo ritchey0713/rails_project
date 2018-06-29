@@ -31,3 +31,7 @@
 
 #ignore github oauth
 /config/initializers/omniauth.rb
+
+
+#ignore .env
+.env 
