@@ -1,0 +1,19 @@
+<%= form_for User.new do |f| %>
+
+  Please pick a User Name
+  <%= f.text_field :name %></br>
+
+  Please enter your Email address
+  <%= f.text_field :email %></br>
+
+  What console do you play on?
+  <%= f.text_field :console %></br>
+
+  What is you desired skill rating?
+  <%= f.number_field :goal %></br>
+
+  Please choose a password
+  <%= f.password_field :password %></br>
+
+  <%= f.submit "Create Account!" %>
+<% end %>

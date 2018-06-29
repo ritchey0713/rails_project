@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
   def create
     if @user = request.env["omniauth.auth"]
-      redirect_to user_path(@user)
+      render 'users/edit'
 
     else
       @user = User.find_by(name: params[:name])
