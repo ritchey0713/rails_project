@@ -1,0 +1,12 @@
+<%= form_for @user do |f| %>
+
+<%= f.hidden_field :name %></br>
+
+What console do you play on?
+<%= f.text_field :console %></br>
+
+What is you desired skill rating?
+<%= f.number_field :goal %></br>
+
+<%= f.submit %>
+<% end %>

@@ -5,12 +5,15 @@ class SessionsController < ApplicationController
 
   def create
     if request.env["omniauth.auth"]
-      if @user = User.find_by(name: params[:name])
+      #binding.pry
+      user = request.env["omniauth.auth"][:info][:name]
+      if @user = User.find_by(name: user)
         session[:user_id] = @user.id
         redirect_to user_path(@user)
       else
-        @user = User.new
-        render 'users/new'
+        @user = User.new(name: request.env["omniauth.auth"][:info][:name], password: SecureRandom.hex(8))
+        @user.save
+        render 'users/update'
       end
     else
       @user = User.find_by(name: params[:name])
