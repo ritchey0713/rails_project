@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       else
         @user = User.new(name: request.env["omniauth.auth"][:info][:name], password: SecureRandom.hex(8))
         @user.save
-        render 'users/update'
+        redirect_to 'users/new_github'
       end
     else
       @user = User.find_by(name: params[:name])
