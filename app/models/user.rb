@@ -3,5 +3,5 @@ class User < ApplicationRecord
   has_many :rankings
   has_many :games, through: :rankings
   validates :name, presence: true
-  validates :password, presence: true
+  validates :password_digest, presence: true
 end

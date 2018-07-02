@@ -1,13 +1,6 @@
 class SessionsController < ApplicationController
 
   def new
-    if request.env["omniauth.auth"]
-      @user = User.new(name: request.env["omniauth.auth"][:info][:name], password: SecureRandom.hex(8))
-      @user.save
-      redirect_to 'users/new_github'
-    else
-      @user = User.new
-    end
   end
 
   def create
@@ -17,6 +10,10 @@ class SessionsController < ApplicationController
       if @user = User.find_by(name: user)
         session[:user_id] = @user.id
         redirect_to user_path(@user)
+      else
+        @user = User.new(name: request.env["omniauth.auth"][:info][:name], password: SecureRandom.hex(8))
+        @user.save
+        render 'users/new_github'
       end
     else
       @user = User.find_by(name: params[:name])
