@@ -47,9 +47,10 @@ end
     redirect_to user_games_path(current_user)
   end
 
-  def scope
+  def score
     if :score
-      redirect_to scope
+      @score = Game.score
+      render "/games/score"
     else
       redirect_to user_games_path(current_user)
     end

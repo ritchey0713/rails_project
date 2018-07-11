@@ -7,7 +7,7 @@ class Game < ApplicationRecord
 
   scope :pro_level, ->(play_time) { where("play_time > 200", play_time ) }
 
-  
+  scope :score, -> { where("score > 2500")}
 
   def rank_symbol(score)
     game = self.score
