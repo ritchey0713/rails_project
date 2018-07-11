@@ -3,6 +3,7 @@ class GamesController < ApplicationController
   def new
     @user = User.find(session[:user_id])
     @game = Game.new
+    @ranking = @game.rankings.build
   end
 
   def create
@@ -10,6 +11,7 @@ class GamesController < ApplicationController
       if @game.save
         @ranking = current_user.rankings.build(:game => @game )
         @ranking.save
+
         redirect_to user_games_path(current_user)
       else
         render :new
@@ -22,6 +24,7 @@ class GamesController < ApplicationController
 
   def show
     @game = find_game
+    @rank= Ranking.find_by(game_id: find_game)
   end
 
   def edit
@@ -44,11 +47,23 @@ end
     redirect_to user_games_path(current_user)
   end
 
+  def scope
+    if :score
+      redirect_to scope
+    else
+      redirect_to user_games_path(current_user)
+    end
+  end
+
   private
 
   def game_params
-    params.require(:game).permit(:name, :game_type, :play_time, :main_setup, :score)
+    params.require(:game).permit(:name, :game_type, :play_time, :main_setup, :score, rankings_attributes: [:comment, :user_id])
   end
+
+  def rank_comment
+  end
+
 
   def find_game
       Game.find(params[:id])

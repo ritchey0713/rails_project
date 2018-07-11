@@ -3,12 +3,15 @@ class Game < ApplicationRecord
   has_many :users, through: :rankings
   validates :name, presence: true
   validates :play_time, numericality: true
+  accepts_nested_attributes_for :rankings
 
   scope :pro_level, ->(play_time) { where("play_time > 200", play_time ) }
 
+  
+
   def rank_symbol(score)
     game = self.score
-      if game > 2500
+      if game >= 2500
         "You are a platinum rank CONGRATS!"
       elsif 2000 < game && game < 2499
         "You are a gold rank!"
