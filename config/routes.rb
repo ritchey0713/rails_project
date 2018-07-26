@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'welcome#home'
 
-  resources :users, only:[:new, :create, :show, :update] do
+  resources :users, only:[:new, :create, :show, :edit, :update] do
     resources :games
   end
 

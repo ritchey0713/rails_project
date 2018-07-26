@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       @games = current_user.games
       respond_to do |f|
         f.html{render :show}
-        f.json {render json: @user}
+        f.json {render json: @user, status: 201}
       end
     else
       redirect_to root_path
