@@ -12,5 +12,5 @@
 //
 //= require rails-ujs
 //= require activestorage
-
+//= require user 
 //= require_tree .

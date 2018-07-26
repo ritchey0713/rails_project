@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       respond_to do |f|
-      f.html {redirect_to user_path(@user)}
+      f.html {render :show}
       f.json {render json: @user, status: 201}
     end
     else
