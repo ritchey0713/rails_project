@@ -22,7 +22,7 @@ class GamesController < ApplicationController
     @games = current_user.games
     respond_to do |f|
       f.html {render :index}
-      f.json {render json: @games}
+      f.json {render :json => @games}
     end
   end
 
@@ -31,7 +31,7 @@ class GamesController < ApplicationController
     #@rank= Ranking.find_by(game_id: find_game)
     respond_to do |f|
       f.html {render :show}
-      f.json {render json: @game}
+      f.json {render :json => @game}
     end
   end
 

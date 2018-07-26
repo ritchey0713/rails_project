@@ -7,7 +7,7 @@
   Setup: <%= g.main_setup %></br>
   Score: <%= g.score %></br>
   <%= link_to "Delete", user_game_path(current_user, g), method: :delete %> </br>
-  <%= link_to " Details", user_game_path(current_user, g) %> </br></br>
+  <%= link_to " Details", user_game_path(current_user, g), class: "js-showGame" %> </br></br>
 
 <% end %>
 </div>
