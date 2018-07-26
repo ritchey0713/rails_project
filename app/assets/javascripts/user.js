@@ -30,7 +30,7 @@ $(function(){
     $.getJSON(this.href,function(json){
       console.log(json)
       json.forEach(function(game){
-        $("div.gameName").append("Game: ",game["name"],"</br>", "Game time: ", game["play_time"],"</br>", "View Details...", "</br></br>")
+        $("div.gameName").append("<strong> Game: " ,game["name"],"</strong>", "</br>", "Game time: ", game["play_time"],"</br>", "View Details...", "</br></br>")
       })
     })
   })
