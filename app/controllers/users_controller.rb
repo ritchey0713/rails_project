@@ -8,7 +8,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to user_path(@user)
+      respond_to do |f|
+      f.html {redirect_to user_path(@user)}
+      f.json {render json: @user, status: 201}
+    end
     else
       render 'users/new'
     end
@@ -18,6 +21,10 @@ class UsersController < ApplicationController
     if current_user
       @user = current_user
       @games = current_user.games
+      respond_to do |f|
+        f.html{render :show}
+        f.json {render json: @user}
+      end
     else
       redirect_to root_path
     end
