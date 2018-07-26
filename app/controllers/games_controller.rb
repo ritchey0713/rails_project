@@ -20,6 +20,10 @@ class GamesController < ApplicationController
 
   def index
     @games = current_user.games
+    respond_to do |f|
+      f.html {render :index}
+      f.json {render json: @games, status: 201}
+    end 
   end
 
   def show

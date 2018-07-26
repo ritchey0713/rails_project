@@ -13,12 +13,22 @@ $(function(){
 })
 
 $(function(){
-$("form").submit(function(e){
-var url= this.action
-var data = $(this).serialize()
-  e.preventDefault()
-    $.post(url, data, function(res){
-     $("div.ajaxForm").html(res)
-   })
+  $("form").submit(function(e){
+    var url= this.action
+    var data = $(this).serialize()
+    e.preventDefault()
+      $.post(url, data, function(res){
+        $("div.ajaxForm").html(res)
+      })
+  })
 })
+
+$(function(){
+  $(".js-gameIndex").click(function(e){
+    e.preventDefault()
+    $.get(this.href).success(function(json){
+      $("div.js-inject ol").html(json)
+
+      })
+  })
 })

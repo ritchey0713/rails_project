@@ -1,15 +1,13 @@
 <h1> Hey there <%= current_user.name %>, here is your library and rankings! </h1>
 
+<div="js-AllGames" >
 <% @games.each do |g| %>
-  Game name: <%= link_to g.name, edit_user_game_path(current_user, g) %> </br>
+  Game name: <%= link_to g.name, edit_user_game_path(current_user, g), class: "js-userGameEdit" %></br>
   Play time (hours): <%= g.play_time %></br>
   Setup: <%= g.main_setup %></br>
   Score: <%= g.score %></br>
   <%= link_to "Delete", user_game_path(current_user, g), method: :delete %> </br>
-  <%= link_to " Details", user_game_path(current_user, g) %> </br> 
+  <%= link_to " Details", user_game_path(current_user, g) %> </br></br>
 
 <% end %>
-
-<%= link_to "logout", logout_path %>
-<%= link_to "Add a game", new_user_game_path(current_user) %>
-<%= link_to "Home Page", user_path(current_user) %>
+</div>
