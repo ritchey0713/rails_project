@@ -11,7 +11,7 @@ $(function(){
     })
   })
 })
-
+//edit form submission
 $(function(){
   $("form").submit(function(e){
     var url= this.action
@@ -23,6 +23,7 @@ $(function(){
   })
 })
 
+// get request for game index
 $(function(){
   $(".js-gameIndex").click(function(e){
     e.preventDefault()
@@ -32,3 +33,5 @@ $(function(){
       })
   })
 })
+
+// game show specifics 
