@@ -30,6 +30,7 @@ class GamesController < ApplicationController
   def edit
     @user = current_user
     @game = find_game
+    render :layout => false
   end
 
   def update

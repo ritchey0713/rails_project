@@ -8,10 +8,12 @@
 <h5>Preferred console: <%= @user.console %> </br>
 Current score goal: <%= @user.goal %> </br> </h5>
 
-<% @games.each do |g| %></br>
-<%= link_to g.name, edit_user_game_path(current_user, g), class: "js-userGameEdit" %></br>
-<%= g.score %></br>
-<% end %>
+<div class="editForm">
+  <% @games.each do |g| %></br>
+  <%= link_to g.name, edit_user_game_path(current_user, g), class: "js-userGameEdit" %></br>
+  <%= g.score %></br>
+  <% end %>
+</div>
 
 <%= link_to "Add a game", new_user_game_path(@user) %>
 <%= link_to "Log out", logout_path %>
