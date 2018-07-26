@@ -3,11 +3,12 @@
 $(function(){
   $(".js-userGameEdit").click(function(e){
     e.preventDefault()
-    $.get(this.href).success(function(response){
+    $.get(this.href, "json").success(function(response){
+      console.log(response)
       // inject repsonse into page
       $("div.ajaxForm").html(response)
     }).error(function(){
-      window.location.replace(`"users/ + ${id} +/games"`)
+      window.location.replace("Logged_in_home")
     })
   })
 })
@@ -23,7 +24,6 @@ $(function(){
   })
 })
 
-// get request for game index
 $(function(){
   $(".js-gameIndex").click(function(e){
     e.preventDefault()
@@ -33,5 +33,3 @@ $(function(){
       })
   })
 })
-
-// game show specifics 
