@@ -8,10 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      respond_to do |f|
-      f.html {render :show}
-      f.json {render json: @user, status: 201}
-    end
+      render :show
     else
       render 'users/new'
     end

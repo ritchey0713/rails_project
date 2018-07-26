@@ -24,13 +24,12 @@ class GamesController < ApplicationController
 
   def show
     @game = find_game
-    @rank= Ranking.find_by(game_id: find_game)
+    #@rank= Ranking.find_by(game_id: find_game)
   end
 
   def edit
     @user = current_user
     @game = find_game
-    render :layout => false
   end
 
   def update

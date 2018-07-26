@@ -9,7 +9,8 @@
      Main Setup: <%= @game.main_setup %> </br>
      Score: <%= @game.score %> </br>
      Last update at all: <%= @game.updated_at %> </br> </h3>
-     Your Comments: <%= @rank.comment %></br> </br>
+
+     <!-- Your Comments: <%#= @rank.comment %></br> </br> -->
 
 <%= link_to "logout", logout_path %>
 <%= link_to "edit #{@game.name}", edit_user_game_path(current_user, @game) %>
