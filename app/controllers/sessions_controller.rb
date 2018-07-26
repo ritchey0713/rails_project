@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       user = request.env["omniauth.auth"][:info][:name]
       if @user = User.find_by(name: user)
         session[:user_id] = @user.id
-        redirect_to user_path(@user)
+        redirect_to logged_in_home_path
       else
         @user = User.new(name: request.env["omniauth.auth"][:info][:name], password: SecureRandom.hex(8))
         @user.save

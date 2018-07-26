@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   get "/score" => "games#score"
 
-  get "/loged_in_home" => "users#index" 
+  get "/logged_in_home" => "users#logged_in_home" 
 
 
 

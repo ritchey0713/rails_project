@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
 
-  def index
+  def logged_in_home
+    if current_user
     @user = current_user
+  end
+
   end
 
   def new
