@@ -12,5 +12,8 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require user 
+//= require user
+//= require game
+//= require jquery
+//= require jquery_ujs 
 //= require_tree .
