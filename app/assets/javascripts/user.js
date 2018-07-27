@@ -1,28 +1,54 @@
-function Game(attr){
+function Game(attr, user_id){
 this.id = attr.id
 this.name = attr.name
 this.game_type = attr.game_type
 this.play_time = attr.play_time
 this.main_setup = attr.main_setup
 this.score = attr.score
+this.user_id = user_id
 }
 
 // getting the game edit form
+// $(function(){
+//   $(".js-userGameEdit").one("click",function(e){
+//     e.preventDefault()
+//     $.get(this.href).success(function(response){
+//       console.log(response)
+//       // inject repsonse into page
+//       $("div.ajaxForm").html(response)
+//     }).error(function(){
+//       window.location.replace("Logged_in_home")
+//     })
+// })
+// })
+//edit form submission
+// $(function(){
+//   $("form").submit(function(e){
+//     var url= this.action
+//     var data = $(this).serialize()
+//     e.preventDefault()
+//       $.post(url, data, function(res){
+//         $("div.ajaxForm").html(res)
+//       })
+//   })
+// })
+
+
+
+
 $(function(){
-  $(".js-userGameEdit").click(function(e){
+  $("a.js-addGame").one("click",function(e){
     e.preventDefault()
-    $.get(this.href).success(function(response){
-      console.log(response)
-      // inject repsonse into page
-      $("div.ajaxForm").html(response)
+    $.get(this.href).success(function(resp){
+      $("div.ajaxForm").html(resp)
     }).error(function(){
       window.location.replace("Logged_in_home")
     })
+  })
 })
-})
-//edit form submission
+
 $(function(){
-  $("form").submit(function(e){
+  $("form#new_game").submit(function(e){
     var url= this.action
     var data = $(this).serialize()
     e.preventDefault()
@@ -32,23 +58,7 @@ $(function(){
   })
 })
 
-$(function(){
-  $("form").click(function(e){
-    e.preventDefault()
-  })
-})
 
-
-$(function(){
-  $("a.js-addGame").click(function(e){
-    e.preventDefault()
-    $.get(this.href).success(function(resp){
-      $("div.ajaxForm").html(resp)
-    }).error(function(){
-      window.location.replace("Logged_in_home")
-    })
-  })
-})
 
 Game.prototype.user_id = $(function(){
   $("h1").data("user-id")
@@ -61,9 +71,10 @@ $(function(){
      $.getJSON(this.href,function(games_array){
          //var user_id = $("h1").data("user-id")
       games_array.forEach(function(game){
-        var new_game = new Game(game)
+        var user_id = $("h1").data("user-id")
+        var new_game = new Game(game, user_id)
         var gameLi = new_game.renderLI()
-        //var user_id = $("h1").data("user-id")
+
         //debugger
         $("ul#games_list").append(gameLi)
 
@@ -73,10 +84,17 @@ $(function(){
  })
 
  $(function(){
-Game.templateSource = $("#games-template").html();
+Game.templateSource = $("#games-template").innerHTML;
 Game.template = Handlebars.compile($("#games-template").html());
  })
 
 Game.prototype.renderLI = function(){
   return Game.template(this)
 }
+
+// game details
+$(function(){
+  $("").click(function(e){
+    e.preventDefault()
+  })
+})

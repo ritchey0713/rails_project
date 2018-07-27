@@ -12,9 +12,9 @@ class GamesController < ApplicationController
         @ranking = current_user.rankings.build(:game => @game )
         @ranking.save
         respond_to do |f|
-          f.html {render :index}
+          f.html {render :show}
           f.json {render :json => @game}
-        end 
+        end
       else
         render :new
       end

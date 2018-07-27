@@ -14,7 +14,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require handlebars.min
-//= require rails-ujs
+
 //= require activestorage
 //= require user
 //= require game
