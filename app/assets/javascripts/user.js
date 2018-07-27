@@ -52,6 +52,7 @@ $(function(){
     var url= this.action
     var data = $(this).serialize()
     e.preventDefault()
+    debugger
       $.post(url, data, function(res){
         $("div.ajaxForm").html(res)
       })
@@ -94,7 +95,7 @@ Game.prototype.renderLI = function(){
 
 // game details
 $(function(){
-  $("").click(function(e){
+  $("a#showGame").click(function(e){
     e.preventDefault()
   })
 })

@@ -12,7 +12,7 @@ class GamesController < ApplicationController
         @ranking = current_user.rankings.build(:game => @game )
         @ranking.save
         respond_to do |f|
-          f.html {render :show}
+          f.html {redirect_to "/users/logged_in_home"}
           f.json {render :json => @game}
         end
       else

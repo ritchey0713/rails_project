@@ -1,4 +1,5 @@
 <%= form_for [@user, @game] do |f| %>
+  <%= f.hidden_field :user_id, :value => @user.id %>
 
   <% if @game.errors.any? %>
 
