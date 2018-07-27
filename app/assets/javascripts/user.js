@@ -14,6 +14,11 @@ Game.templateSource = $("#games-template").innerHTML;
 Game.template = Handlebars.compile($("#games-template").html());
 })
 
+$(function(){
+Game.editSource = $("#edit-game-template").innerHTML;
+Game.editTemplate = Handlebars.compile($("#edit-game-template").html());
+})
+
 Game.prototype.renderLI = function(){
   return Game.template(this)
 }
@@ -89,6 +94,18 @@ $(function(){
      })
    })
  })
+
+ // grab the edit form
+ $(function(){
+   $(document).on("click", 'a#editGame', function(e){
+     e.preventDefault()
+     $.get(this.href).success(function(resp){
+       $("div.ajaxForm").html(resp)
+     }).error(function(){
+       window.location.replace("Logged_in_home")
+       })
+     })
+   })
 
 
 

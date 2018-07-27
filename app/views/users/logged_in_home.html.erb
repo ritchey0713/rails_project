@@ -25,11 +25,28 @@
 </div>
 
 <script id="edit-game-template" type="text/x-handlebars-template">
+  <form class="edit_game" id="edit_game_{{id}}" action="/users/{{user_id}}/games/{{id}}" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" />
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <input value="1" type="hidden" name="{{user_id}}" id="game_user_id" />
 
-    <li><strong> Game: {{name}}</strong></li>
-    <li> Play Time(in hours): {{play_time}} </li>
-    <a href="/users/{{user_id}}/games/{{id}}" id="showGame"> details...</a>
 
+    What is the name of this game?
+    <input type="text" value="{{name}}" name="game[name]" id="game_name" /></br>
+
+    What kind of game is this?
+    <input type="text" value="{{game_type}}" name="game[game_type]" id="game_game_type" /></br>
+
+    How many hours have you played?
+    <input type="number" value="{{play_time}}" name="game[play_time]" id="game_play_time" /></br>
+
+    Who/what is your main character?
+    <input type="text" value="{{main_setup}}" name="game[main_setup]" id="game_main_setup" /></br>
+
+    what is your current skill rating?
+    <input type="number" value="{{score}}" name="game[score]" id="game_score" />
+
+    <input type="submit" name="commit" value="Click to submit!" class="js-submit" data-disable-with="Click to submit!" />
+  </form>
 </script>
 
 <script id="games-template" type="text/x-handlebars-template">
@@ -37,6 +54,8 @@
     <li><strong> Game: {{name}}</strong></li>
     <li> Play Time(in hours): {{play_time}} </li>
     <a href="/users/{{user_id}}/games/{{id}}" id="showGame"> details...</a>
+    <a href="/users/{{user_id}}/games/{{id}}/edit" id="editGame">Edit this game?</a>
+    
 
 </script>
 
