@@ -7,13 +7,15 @@ class GamesController < ApplicationController
   end
 
   def create
+    @user = current_user
     @game = current_user.games.new(game_params)
       if @game.save
         @ranking = current_user.rankings.build(:game => @game )
         @ranking.save
         respond_to do |f|
-          f.html {redirect_to "/users/logged_in_home"}
           f.json {render :json => @game}
+          f.html {redirect_to user_path(@user)}
+
         end
       else
         render :new

@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       @user = current_user
       @games = current_user.games
       respond_to do |f|
-        f.html {redirect_to "/user/logged_in_home"}
+        f.html {render :show}
         f.json {render json: @user, status: 201}
       end
     else

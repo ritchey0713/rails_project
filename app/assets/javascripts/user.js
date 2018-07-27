@@ -49,16 +49,25 @@ $(function(){
 
 $(function(){
   $("form#new_game").submit(function(e){
-    var url= this.action
-    var data = $(this).serialize()
+    var action = this.action
+    var params = $(this).serialize()
     e.preventDefault()
-      $.post(url, data, function(res){
-        $("div.ajaxForm").html(res)
+      $.ajax({
+        url: action,
+        data: params,
+        dataType: "json",
+        method: "POST"
       })
+      .success(function(json){
+        console.log(json)
+      }).error(function(resp){
+        console.log("you got an error??", resp)
+      })
+      //function(res){
+        //$("div.ajaxForm").html(res)
+      //})
   })
 })
-
-
 
 Game.prototype.user_id = $(function(){
   $("h1").data("user-id")
