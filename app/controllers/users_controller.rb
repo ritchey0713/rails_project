@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      render :show
+      redirect_to "/users/logged_in_home"
     else
       render 'users/new'
     end
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       @user = current_user
       @games = current_user.games
       respond_to do |f|
-        f.html{render :show}
+        f.html {redirect_to "/user/logged_in_home"}
         f.json {render json: @user, status: 201}
       end
     else

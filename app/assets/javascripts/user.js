@@ -52,7 +52,6 @@ $(function(){
     var url= this.action
     var data = $(this).serialize()
     e.preventDefault()
-    debugger
       $.post(url, data, function(res){
         $("div.ajaxForm").html(res)
       })
@@ -98,7 +97,6 @@ $(function() {
   $(document).on('click', 'a#showGame', function(e) {
     e.preventDefault()
     $.getJSON(this.href, function(game){
-      console.log(game)
       // event to remove index
       // $("ul.games_list").remove()
       $(".showHeading").html(`Full details`)
