@@ -77,7 +77,7 @@ $(function(){
         var gameLi = new_game.renderLI()
 
         //debugger
-        $("ul#games_list").append(gameLi)
+        $("ul.games_list").append(gameLi)
 
       })
     })
@@ -94,8 +94,13 @@ Game.prototype.renderLI = function(){
 }
 
 // game details
-$(function(){
-  $("a#showGame").click(function(e){
+$(function() {
+  $(document).on('click', 'a#showGame', function(e) {
     e.preventDefault()
+    $.getJSON(this.href, function(game){
+      // event to remove index
+      $("ul.games_list").hide()
+      $(".gameName").text(game["name"])
+    })
   })
 })
