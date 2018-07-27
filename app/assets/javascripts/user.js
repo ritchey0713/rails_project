@@ -66,7 +66,7 @@ Game.prototype.user_id = $(function(){
 })
 // use handlebars for json index
 $(function(){
-   $(".js-gameIndex").one("click",function(e){
+   $(".js-gameIndex").click(function(e){
 
      e.preventDefault()
      $.getJSON(this.href,function(games_array){
@@ -98,9 +98,16 @@ $(function() {
   $(document).on('click', 'a#showGame', function(e) {
     e.preventDefault()
     $.getJSON(this.href, function(game){
+      console.log(game)
       // event to remove index
-      $("ul.games_list").hide()
-      $(".gameName").text(game["name"])
+      // $("ul.games_list").remove()
+      $(".showHeading").html(`Full details`)
+      $(".gameName").text(`Game: ${game["name"]}`)
+      $(".gameType").text(`Game Type: ${game["game_type"]}`)
+      $(".gameTime").text(`Game Time: ${game["play_time"]}`)
+      $(".gameSetup").text(`Gear Setup: ${game["main_setup"]}`)
+      $(".gameScore").text(`Ranking Score: ${game["score"]}`)
+
     })
   })
 })
