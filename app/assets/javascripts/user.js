@@ -1,12 +1,11 @@
 function Game(attr){
+this.id = attr.id
 this.name = attr.name
 this.game_type = attr.game_type
 this.play_time = attr.play_time
 this.main_setup = attr.main_setup
 this.score = attr.score
 }
-
-
 
 // getting the game edit form
 $(function(){
@@ -32,29 +31,42 @@ $(function(){
       })
   })
 })
-// get json index
-// $(function(){
-//   $(".js-gameIndex").click(function(e){
-//     e.preventDefault()
-//     $.getJSON(this.href,function(json){
-//       console.log(json)
-//       json.forEach(function(game){
-//         $("div.gameName").append("<strong> Game: " ,game["name"],"</strong>", "</br>", "Game time: ", game["play_time"],"</br>", "View Details...", "</br></br>")
-//       })
-//     })
-//   })
-// })
 
+$(function(){
+  $("form").click(function(e){
+    e.preventDefault()
+  })
+})
+
+
+$(function(){
+  $("a.js-addGame").click(function(e){
+    e.preventDefault()
+    $.get(this.href).success(function(resp){
+      $("div.ajaxForm").html(resp)
+    }).error(function(){
+      window.location.replace("Logged_in_home")
+    })
+  })
+})
+
+Game.prototype.user_id = $(function(){
+  $("h1").data("user-id")
+})
 // use handlebars for json index
 $(function(){
-   $(".js-gameIndex").click(function(e){
-     this.user_id = $("h1").data("user-id")
+   $(".js-gameIndex").one("click",function(e){
+
      e.preventDefault()
      $.getJSON(this.href,function(games_array){
+         //var user_id = $("h1").data("user-id")
       games_array.forEach(function(game){
         var new_game = new Game(game)
         var gameLi = new_game.renderLI()
+        //var user_id = $("h1").data("user-id")
+        //debugger
         $("ul#games_list").append(gameLi)
+
       })
     })
    })
@@ -62,25 +74,9 @@ $(function(){
 
  $(function(){
 Game.templateSource = $("#games-template").html();
-Game.template = Handlebars.compile(Game.templateSource);
+Game.template = Handlebars.compile($("#games-template").html());
  })
 
 Game.prototype.renderLI = function(){
-
   return Game.template(this)
 }
-
-
-
-
-
-
-
-
-// show individual game
-$(function(){
-  $("js-showGame").click(function(e){
-    e.preventDefault()
-    alert("hello")
-  })
-})

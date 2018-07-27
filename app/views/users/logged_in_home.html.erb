@@ -22,9 +22,12 @@
 </div>
 
 <script id="games-template" type="text/x-handlebars-template">
-    <li><strong> Game: {{name}} </strong></li>
-    <li> Play Time: {{this.play_time}} </li>
-    <li><a href="/users/{{user_id}}/games/{{this.id}}"> details...  </li>
+
+    <li><strong> Game: {{name}}</strong></li>
+    <li> Play Time(in hours): {{play_time}} </li>
+    <li> {{id}}</li>
+    <a href="/users/1/games/{{id}}" id="showGame"> details...</a>
+
 </script>
 
 <ul id ="games_list" data-role="gameview" data-filter="true">
