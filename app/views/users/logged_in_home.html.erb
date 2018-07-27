@@ -24,6 +24,14 @@
   </ol>
 </div>
 
+<script id="edit-game-template" type="text/x-handlebars-template">
+
+    <li><strong> Game: {{name}}</strong></li>
+    <li> Play Time(in hours): {{play_time}} </li>
+    <a href="/users/{{user_id}}/games/{{id}}" id="showGame"> details...</a>
+
+</script>
+
 <script id="games-template" type="text/x-handlebars-template">
 
     <li><strong> Game: {{name}}</strong></li>

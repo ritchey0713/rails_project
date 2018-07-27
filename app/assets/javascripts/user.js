@@ -45,7 +45,7 @@ $(function(){
         var user_id = $("h1").data("user-id")
         var game = new Game(json, user_id)
         gameLI = game.renderLI()
-        $("div.ajaxForm").append(gameLI)
+        $("ul.games_list").append(gameLI)
         }).error(function(resp){
         console.log("you got an error??", resp)
       })
@@ -61,13 +61,10 @@ $(function(){
 
      e.preventDefault()
      $.getJSON(this.href,function(games_array){
-         //var user_id = $("h1").data("user-id")
       games_array.forEach(function(game){
         var user_id = $("h1").data("user-id")
         var new_game = new Game(game, user_id)
         var gameLi = new_game.renderLI()
-
-        //debugger
         $("ul.games_list").append(gameLi)
 
       })
