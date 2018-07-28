@@ -23,16 +23,18 @@ Game.prototype.renderLI = function(){
     return Game.template(this)
 }
 
+Game.success = function(resp){
+  $("ul.games_list").html(resp)
+}
+
 $(function(){
     $("a.js-addGame").one("click",function(e){
       e.preventDefault()
-      $.get(this.href).success(function(resp){
-        $("ul.games_list").html(resp)
-        })
+      $.get(this.href).success(Game.success)
+    })
       .error(function(){
         window.location.replace("Logged_in_home")
       })
-    })
 })
 
 //submit the new form via json
@@ -53,8 +55,8 @@ $(function(){
         gameLI = game.renderLI()
         $("ul.games_list").append(gameLI)
       })
-        .error(function(resp){
-          console.log("you got an error??", resp)
+      .error(function(resp){
+        console.log("you got an error??", resp)
         })
   })
 })
@@ -99,9 +101,7 @@ $(function(){
  $(function(){
    $(document).on("click", 'a#editGame', function(e){
      e.preventDefault()
-     $.get(this.href).success(function(resp){
-       $("ul.games_list").html(resp)
-     }).error(function(){
+     $.get(this.href).success(Game.success).error(function(){
        window.location.replace("Logged_in_home")
        })
      })
@@ -113,8 +113,6 @@ $(function(){
     var action = this.action
     var params = $(this).serialize()
     e.preventDefault()
-      $.post(action, params,function(resp){
-        $("ul.games_list").html(resp)
-        })
-      })
+      $.post(action, params,Game. success)
+    })
   })
