@@ -31,13 +31,28 @@ Game.error = function(){
   window.location.replace("Logged_in_home")
 }
 
+Game.newGame = function(e){
+  var action = this.action
+  var params = $(this).serialize()
+  e.preventDefault()
+
+  $.ajax({
+    url: action,
+    data: params,
+    dataType: "json",
+    method: "POST"
+    })
+    .success(Game.createGame)
+    .error(Game.error)
+}
+
 Game.createGame = function(json){
   var user_id = $("h1").data("user-id")
   var game = new Game(json, user_id)
   gameLI = game.renderLI()
   $("ul.games_list").append(gameLI)
 }
-
+// get the new game form
 $(function(){
     $("a.js-addGame").one("click",function(e){
       e.preventDefault()
@@ -48,20 +63,7 @@ $(function(){
 
 //submit the new form via json
 $(function(){
-  $("form#new_game").submit(function(e){
-    var action = this.action
-    var params = $(this).serialize()
-    e.preventDefault()
-
-    $.ajax({
-      url: action,
-      data: params,
-      dataType: "json",
-      method: "POST"
-      })
-      .success(Game.createGame)
-      .error(Game.error)
-  })
+  $("form#new_game").submit(Game.newGame)
 })
 
 // handlebars template for index of games
