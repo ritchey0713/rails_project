@@ -52,6 +52,11 @@ Game.createGame = function(json){
   gameLI = game.renderLI()
   $("ul.games_list").append(gameLI)
 }
+
+//Game.destroyGame = function(){
+
+//})
+//}
 // get the new game form
 $(function(){
     $("a.js-addGame").one("click",function(e){

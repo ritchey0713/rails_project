@@ -8,6 +8,7 @@ Current score goal: <%= @user.goal %> </br> </h5>
 
   <% @games.each do |g| %></br>
   <%= link_to g.name, edit_user_game_path(current_user, g), class: "js-userGameEdit" %></br>
+  <%= link_to "Delete", user_game_path(@user, g), method: :delete %> </br>
   <%= g.score %></br>
   <% end %>
 </div>

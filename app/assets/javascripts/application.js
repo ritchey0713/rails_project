@@ -16,7 +16,6 @@
 //= require handlebars.min
 
 //= require activestorage
-//= require user
 //= require game
 
 

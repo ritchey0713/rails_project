@@ -7,5 +7,6 @@
      Main Setup: <%= @game.main_setup %> </br>
      Score: <%= @game.score %> </br>
      Last update at all: <%= @game.updated_at %> </br> </h3>
+     <%= link_to "Delete", user_game_path(current_user, @game), method: :delete %> </br>
 
      <!-- Your Comments: <%#= @rank.comment %></br> </br> -->

@@ -58,9 +58,11 @@ class GamesController < ApplicationController
 end
 
   def destroy
+    @user = current_user
     @game = find_game
     @game.rankings.clear
-    redirect_to user_games_path(current_user)
+    redirect_to user_game_path(@game)
+
   end
 
   def score

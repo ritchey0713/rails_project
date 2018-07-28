@@ -29,7 +29,6 @@
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <input value="1" type="hidden" name="{{user_id}}" id="game_user_id" />
 
-
     What is the name of this game?
     <input type="text" value="{{name}}" name="game[name]" id="game_name" /></br>
 
@@ -54,9 +53,8 @@
     <li><strong> Game: {{name}}</strong></li>
     <li> Play Time(in hours): {{play_time}} </li>
     <a href="/users/{{user_id}}/games/{{id}}" id="showGame"> details...</a>
-    <a href="/users/{{user_id}}/games/{{id}}/edit" id="editGame">Edit this game?</a>
-    
-
+    <a href="/users/{{user_id}}/games/{{id}}/edit" id="editGame">Edit {{name}}</a>
+    <a href="/users/{{user_id}}/games/{{id}}" id="fullViewGame">Full Specifics page {{name}}?</a>
 </script>
 
 <ul class="games_list" data-role="gameview" data-filter="true">
