@@ -47,7 +47,11 @@ class GamesController < ApplicationController
   def update
     @game = find_game
       if @game.update(game_params)
-        redirect_to user_game_path(@game)
+        respond_to do |f|
+          f.json {render :json => @game}
+          f.html {redirect_to user_game_path(@game)}
+        end
+
       else
         render :edit
       end

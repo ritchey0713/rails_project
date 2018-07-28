@@ -27,7 +27,7 @@ $(function(){
   $("a.js-addGame").one("click",function(e){
     e.preventDefault()
     $.get(this.href).success(function(resp){
-      $("div.ajaxForm").html(resp)
+      $("ul.games_list").html(resp)
     }).error(function(){
       window.location.replace("Logged_in_home")
     })
@@ -72,6 +72,7 @@ $(function(){
         var gameLi = new_game.renderLI()
         $("ul.games_list").append(gameLi)
 
+
       })
     })
    })
@@ -100,29 +101,30 @@ $(function(){
    $(document).on("click", 'a#editGame', function(e){
      e.preventDefault()
      $.get(this.href).success(function(resp){
-       $("div.ajaxForm").html(resp)
+       $("ul.games_list").html(resp)
      }).error(function(){
        window.location.replace("Logged_in_home")
        })
      })
    })
 
+// submit edit form
+$(function(){
+  $("form").submit(function(e){
+    var action = this.action
+    var params = $(this).serialize()
+    e.preventDefault()
+      $.post(action, params,function(resp){
+        $("ul.games_list").html(resp)
+        })
+      })
+  })
 
 
 
-// getting the game edit form
-// $(function(){
-//   $(".js-userGameEdit").one("click",function(e){
-//     e.preventDefault()
-//     $.get(this.href).success(function(response){
-//       console.log(response)
-//       // inject repsonse into page
-//       $("div.ajaxForm").html(response)
-//     }).error(function(){
-//       window.location.replace("Logged_in_home")
-//     })
-// })
-// })
+
+
+
 //edit form submission
 // $(function(){
 //   $("form").submit(function(e){
