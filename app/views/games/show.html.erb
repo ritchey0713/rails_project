@@ -2,11 +2,12 @@
   <%= @game.rank_symbol(@game.score) %>
   <% end %>
 
-<h3> Game Type: <%= @game.game_type %> </br>
-     Play Time: <%= @game.play_time %> </br>
-     Main Setup: <%= @game.main_setup %> </br>
-     Score: <%= @game.score %> </br>
-     Last update at all: <%= @game.updated_at %> </br> </h3>
-     <%= link_to "Delete", user_game_path(current_user, @game), method: :delete %> </br>
+<h3>
+  Game Type: <%= @game.game_type %> </br>
+  Play Time: <%= @game.play_time %> </br>
+  Main Setup: <%= @game.main_setup %> </br>
+  Score: <%= @game.score %> </br>
+  Last update at all: <%= @game.updated_at %> </br> </h3>
+  <%= link_to "Delete", user_game_path(current_user, @game), method: :delete %> </br>
 
      <!-- Your Comments: <%#= @rank.comment %></br> </br> -->

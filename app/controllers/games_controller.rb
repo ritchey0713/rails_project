@@ -15,7 +15,6 @@ class GamesController < ApplicationController
         respond_to do |f|
           f.json {render :json => @game}
           f.html {redirect_to user_path(@user)}
-
         end
       else
         render :new
@@ -50,19 +49,18 @@ class GamesController < ApplicationController
         respond_to do |f|
           f.json {render :json => @game}
           f.html {redirect_to user_game_path(@game)}
-        end
-
+      end
       else
         render :edit
       end
-end
+  end
 
   def destroy
     @user = current_user
     @game = find_game
     @game.rankings.clear
-    redirect_to user_game_path(@game)
-
+    @game.delete
+    redirect_to "/logged_in_home"
   end
 
   def score

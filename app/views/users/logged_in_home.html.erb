@@ -1,7 +1,5 @@
 <h1 data-user-id="<%= @user.id %>"> Welcome back, <%= @user.name %> </h1>
 
-
-
 <div class="nav">
   <%= link_to "Add a game", new_user_game_path(@user), :class => "js-addGame" %>
   <%= link_to "Log out", logout_path %>
@@ -54,7 +52,7 @@
     <li> Play Time(in hours): {{play_time}} </li>
     <a href="/users/{{user_id}}/games/{{id}}" id="showGame"> details...</a>
     <a href="/users/{{user_id}}/games/{{id}}/edit" id="editGame">Edit {{name}}</a>
-    <a href="/users/{{user_id}}/games/{{id}}" id="fullViewGame">Full Specifics page {{name}}?</a>
+    <a href="/users/{{user_id}}/games/{{id}}" id="fullViewGame">Full Specifics of {{name}}?</a>
 </script>
 
 <ul class="games_list" data-role="gameview" data-filter="true">

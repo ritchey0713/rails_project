@@ -1,7 +1,7 @@
 <% if flash[:notice] %>
   <%= flash[:notice] %>
 <% end %>
-
+<%= link_to "main page", "/users/logged_in_home" %><br>
 <h3> Your current stats: </h3>
 <h5>Preferred console: <%= @user.console %> </br>
 Current score goal: <%= @user.goal %> </br> </h5>
@@ -10,5 +10,6 @@ Current score goal: <%= @user.goal %> </br> </h5>
   <%= link_to g.name, edit_user_game_path(current_user, g), class: "js-userGameEdit" %></br>
   <%= link_to "Delete", user_game_path(@user, g), method: :delete %> </br>
   <%= g.score %></br>
+
   <% end %>
 </div>

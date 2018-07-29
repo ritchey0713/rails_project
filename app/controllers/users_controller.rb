@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   def logged_in_home
     if current_user
       @user = current_user
+    else
+      render root_path
     end
   end
 

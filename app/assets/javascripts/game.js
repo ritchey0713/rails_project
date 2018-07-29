@@ -10,8 +10,8 @@ function Game(attr, user_id){
 }
 
 $(function(){
-    Game.templateSource = $("#games-template").innerHTML;
-    Game.template = Handlebars.compile($("#games-template").html());
+    Game.templateSource = $("#games-template").html();
+    Game.template = Handlebars.compile(Game.templateSource);
 })
 
 $(function(){
@@ -32,9 +32,9 @@ Game.error = function(){
 }
 
 Game.newGame = function(e){
+  e.preventDefault()
   var action = this.action
   var params = $(this).serialize()
-  e.preventDefault()
 
   $.ajax({
     url: action,
@@ -53,13 +53,9 @@ Game.createGame = function(json){
   $("ul.games_list").append(gameLI)
 }
 
-//Game.destroyGame = function(){
-
-//})
-//}
 // get the new game form
 $(function(){
-    $("a.js-addGame").one("click",function(e){
+    $("a.js-addGame").on("click",function(e){
       e.preventDefault()
       $.get(this.href).success(Game.success)
     })
@@ -68,7 +64,7 @@ $(function(){
 
 //submit the new form via json
 $(function(){
-  $("form#new_game").submit(Game.newGame)
+  $("form#new_game").one("submit","input#js-newGame", Game.newGame)
 })
 
 // handlebars template for index of games
