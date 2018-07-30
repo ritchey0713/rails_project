@@ -11,8 +11,6 @@ class GamesController < ApplicationController
     @user = current_user
     @game = current_user.games.new(game_params)
       if @game.save
-        #@ranking = current_user.rankings.build(:game => @game )
-        #@ranking.save
         respond_to do |f|
           f.json {render :layout => false, :json => @game}
           f.html {redirect_to user_path(@user)}
