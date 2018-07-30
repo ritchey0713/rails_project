@@ -4,6 +4,7 @@ class GamesController < ApplicationController
     @user = User.find(session[:user_id])
     @game = Game.new
     @ranking = @game.rankings.build
+    #render json: {key: "value"}
   end
 
   def create

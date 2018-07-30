@@ -53,9 +53,16 @@ Game.createGame = function(json){
   $("ul.games_list").append(gameLI)
 }
 
+Game.indexGame = function(json){
+  var user_id = $("h1").data("user-id")
+  var game = new Game(json, user_id)
+  gameLI = game.renderLI()
+  $("ul.games_all").append(gameLI)
+}
+
 // get the new game form
 $(function(){
-    $("a.js-addGame").on("click",function(e){
+    $("a.js-addGame").one("click",function(e){
       e.preventDefault()
       $.get(this.href).success(Game.success)
     })
@@ -64,16 +71,17 @@ $(function(){
 
 //submit the new form via json
 $(function(){
-  $("form#new_game").one("submit","input#js-newGame", Game.newGame)
+  $("form#new_game").on("submit", "input.js-newGame", Game.newGame)
 })
 
 // handlebars template for index of games
-$(function(){
-   $(".js-gameIndex").click(function(e){
-
+$(function index(){
+   $(".js-gameIndex").on("click", function(e){
      e.preventDefault()
+     $(".js-gameIndex").off("click")
+debugger
      $.getJSON(this.href,function(games_array){
-      games_array.forEach(Game.createGame)
+      games_array.forEach(Game.indexGame)
     })
    })
  })

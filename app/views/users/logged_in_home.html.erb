@@ -50,10 +50,13 @@
 
     <li><strong> Game: {{name}}</strong></li>
     <li> Play Time(in hours): {{play_time}} </li>
-    <a href="/users/{{user_id}}/games/{{id}}" id="showGame"> details...</a>
-    <a href="/users/{{user_id}}/games/{{id}}/edit" id="editGame">Edit {{name}}</a>
+    <a href="/users/{{user_id}}/games/{{id}}" id="showGame"> details...</a>,
+    <a href="/users/{{user_id}}/games/{{id}}/edit" id="editGame">Edit {{name}}</a>,
     <a href="/users/{{user_id}}/games/{{id}}" id="fullViewGame">Full Specifics of {{name}}?</a>
 </script>
 
 <ul class="games_list" data-role="gameview" data-filter="true">
+</ul>
+
+<ul class="games_all" data-role="gameview" data-filter="true">
 </ul>
