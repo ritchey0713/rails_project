@@ -4,17 +4,17 @@ class GamesController < ApplicationController
     @user = User.find(session[:user_id])
     @game = Game.new
     @ranking = @game.rankings.build
-    #render json: {key: "value"}
+    #render "games/_form", :layout => false
   end
 
   def create
     @user = current_user
     @game = current_user.games.new(game_params)
       if @game.save
-        @ranking = current_user.rankings.build(:game => @game )
-        @ranking.save
+        #@ranking = current_user.rankings.build(:game => @game )
+        #@ranking.save
         respond_to do |f|
-          f.json {render :json => @game}
+          f.json {render :layout => false, :json => @game}
           f.html {redirect_to user_path(@user)}
         end
       else
@@ -32,7 +32,7 @@ class GamesController < ApplicationController
 
   def show
     @game = find_game
-    #@rank= Ranking.find_by(game_id: find_game)
+    @rank= Ranking.find_by(game_id: find_game)
     respond_to do |f|
       f.html {render :show}
       f.json {render :json => @game}

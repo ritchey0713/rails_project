@@ -21,13 +21,13 @@
   <%= f.text_field :main_setup %></br>
 
   what is your current skill rating?
-  <%= f.number_field :score %>
+  <%= f.number_field :score %></br>
 
-  <!-- <%#= f.fields_for :rankings do |com| %>
-  <%#= com.hidden_field :user_id, :value => @user.id %>
+  <%= f.fields_for :rankings do |com| %>
+  <%= com.hidden_field :user_id, :value => @user.id %>
 
-  Leave a comment! : <%#= com.text_field :comment %>
-  <#% end %> -->
+  Leave a comment! : <%= com.text_field :comment %>
+  <% end %>
 
 
   <%= f.submit "Click to submit!", :class => "js-newGame" %>
