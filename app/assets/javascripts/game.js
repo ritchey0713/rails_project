@@ -1,12 +1,12 @@
 //constructor prototype
-function Game(attr, user_id){
+function Game(attr, userId){
     this.id = attr.id
     this.name = attr.name
     this.game_type = attr.game_type
     this.play_time = attr.play_time
     this.main_setup = attr.main_setup
     this.score = attr.score
-    this.user_id = user_id
+    this.user_id = userId
     this.comment = attr.comment
 }
 
@@ -25,6 +25,7 @@ Game.prototype.renderLI = function(){
 }
 
 Game.success = function(resp){
+  console.log(resp)
   $("ul.games_list").html(resp)
 }
 
@@ -48,18 +49,22 @@ Game.newGame = function(e){
 }
 
 Game.createGame = function(json){
-  var user_id = $("h1").data("user-id")
-  var game = new Game(json, user_id)
+  var userId = $("h1").data("user-id")
+  var game = new Game(json, userId)
   gameLI = game.renderLI()
 
   $("ul.games_list").append(gameLI)
 }
 
-Game.indexGame = function(json){
-  var user_id = $("h1").data("user-id")
-  var game = new Game(json, user_id)
-  gameLI = game.renderLI()
-  $("ul.games_all").append(gameLI)
+function sortgames(a, b){
+  const game1 = a.name.toLowerCase()
+  const game2 = b.name.toLowerCase()
+  if(game1 < game2){
+    return -1
+  }
+  else {
+    return 1
+  }
 }
 
 // get the new game form
@@ -80,9 +85,11 @@ $(function(){
 $(function index(){
    $(".js-gameIndex").on("click", function(e){
      e.preventDefault()
-     $(".js-gameIndex").off("click")
+    $(".js-gameIndex").off("click")
      $.getJSON(this.href,function(games_array){
-      games_array.forEach(Game.indexGame)
+       $('.gameSort').click(games_array.sort(sortgames))
+      games_array.forEach(Game.createGame)
+
     })
    })
  })
@@ -92,7 +99,6 @@ $(function index(){
    $(document).on('click', 'a#showGame', function(e) {
      e.preventDefault()
      $.getJSON(this.href, function(game){
-       console.log(game)
 
        $(".showHeading").html(`Full details`)
        $(".gameName").text(`Game: ${game["name"]}`)
